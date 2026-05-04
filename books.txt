@@ -1,0 +1,3 @@
+Title=Java Basics
+Author=John Doe
+Year=2020
