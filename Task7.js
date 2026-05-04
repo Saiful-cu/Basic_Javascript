@@ -1,14 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-
-class Book {
-    constructor(title, author, year, price) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
-        this.price = price;
-    }
-}
+const Book = require("./Book");
 
 function main() {
     try {

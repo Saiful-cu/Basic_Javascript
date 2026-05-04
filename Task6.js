@@ -1,3 +1,5 @@
+const Book = require("./Book");
+
 class LibraryManager {
     constructor() {
         this.bookList = [];
@@ -14,30 +16,13 @@ class LibraryManager {
 
     displayAllBooks() {
         for (const book of this.bookList) {
-            book.displayBookDetails();
+            console.log(book.displayBookDetails());
         }
     }
 
     findBooksByAuthor(author) {
         const normalizedAuthor = author.toLowerCase();
-        for (const book of this.bookList) {
-            if (book.author.toLowerCase() === normalizedAuthor) {
-                book.displayBookDetails();
-            }
-        }
-    }
-}
-
-class Book {
-    constructor(title, author, year, price) {
-        this.title = title;
-        this.author = author;
-        this.year = year;
-        this.price = price;
-    }
-
-    displayBookDetails() {
-        console.log(`${this.title} by ${this.author} (${this.year}) - $${this.price.toFixed(2)}`);
+        return this.bookList.filter((book) => book.author.toLowerCase() === normalizedAuthor);
     }
 }
 
@@ -51,7 +36,10 @@ function main() {
     library.displayAllBooks();
 
     console.log("Books by John Doe:");
-    library.findBooksByAuthor("John Doe");
+    const booksByJohnDoe = library.findBooksByAuthor("John Doe");
+    for (const book of booksByJohnDoe) {
+        console.log(book.displayBookDetails());
+    }
 
     library.removeBookByTitle("OOP Guide");
     console.log("After removal:");
