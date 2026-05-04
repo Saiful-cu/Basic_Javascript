@@ -7,14 +7,19 @@ class BankAccount {
     depositAmount(amount) {
         if (amount > 0) {
             this.balance += amount;
+            return true;
         }
+        console.log("Invalid deposit attempt");
+        return false;
     }
 
     withdrawAmount(amount) {
         if (amount > 0 && amount <= this.balance) {
             this.balance -= amount;
+            return true;
         } else {
             console.log("Invalid withdrawal attempt");
+            return false;
         }
     }
 
